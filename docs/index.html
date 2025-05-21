@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Bike Collector | Superbikes & Cruisers</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* Base Styles */
         * {
@@ -107,45 +108,6 @@
             color: #fff;
         }
 
-        /* Modals */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #1a1a1a;
-            padding: 2rem;
-            border-radius: 10px;
-            z-index: 1001;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            cursor: pointer;
-            font-size: 1.5rem;
-            padding: 0 0.5rem;
-        }
-
-        .modal h2 {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        input {
-            width: 100%;
-            padding: 0.8rem;
-            margin-top: 0.5rem;
-            background: #333;
-            border: none;
-            color: #fff;
-        }
-
         /* Inventory Grid */
         .inventory-grid {
             display: grid;
@@ -202,174 +164,179 @@
                 font-size: 2.5rem;
             }
         }
-    .hero {
-        height: 100vh;
-        position: relative;
-        background: linear-gradient(135deg, 
-            rgba(10, 10, 10, 0.95) 0%,
-            rgba(40, 40, 40, 0.85) 100%),
-            url('/media/images/branding/indexbg.png') center/cover;
-    }
+        .hero {
+            height: 100vh;
+            position: relative;
+            background: linear-gradient(135deg, 
+                rgba(10, 10, 10, 0.95) 0%,
+                rgba(40, 40, 40, 0.85) 100%),
+                url('/media/images/branding/indexbg.png') center/cover;
+        }
 
-    .hero-overlay {
-        padding: 120px 5% 0;
-        height: 100%;
-        display: flex;
-        align-items: center;
-    }
+        .hero-overlay {
+            padding: 120px 5% 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
 
-    .hero-title {
-        font-family: 'Bebas Neue', cursive;
-        font-size: 4.5rem;
-        color: #fff;
-        text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
-        margin-bottom: 1.5rem;
-        line-height: 1;
-    }
-
-    .hero-subtitle {
-        font-size: 1.8rem;
-        font-weight: 300;
-        margin-bottom: 3rem;
-        color: #eee;
-    }
-
-    .vehicle-types {
-        display: inline-block;
-        margin-top: 1rem;
-        font-weight: 600;
-        color: #ff6b35;
-    }
-
-    .cta-stack {
-        display: grid;
-        gap: 1.2rem;
-        max-width: 400px;
-    }
-
-    .btn-secondary {
-        background: #2b2b2b;
-        border: 2px solid #ff6b35;
-        color: #ff6b35;
-    }
-
-    .btn-outline {
-        background: transparent;
-        border: 2px solid #666;
-        color: #fff;
-    }
-
-    .trust-badges {
-        margin-top: 3rem;
-        display: flex;
-        gap: 2rem;
-        flex-wrap: wrap;
-    }
-
-    .trust-item {
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        font-size: 0.9rem;
-        color: #ccc;
-    }
-
-    .hero-scroll-indicator {
-        position: absolute;
-        bottom: 40px;
-        left: 50%;
-        transform: translateX(-50%);
-        animation: bounce 2s infinite;
-        font-size: 2rem;
-        color: #fff;
-    }
-
-    @keyframes bounce {
-        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-        40% { transform: translateY(-30px); }
-        60% { transform: translateY(-15px); }
-    }
-
-    @media (max-width: 768px) {
         .hero-title {
-            font-size: 3rem;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 4.5rem;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            margin-bottom: 1.5rem;
+            line-height: 1;
         }
-        
+
         .hero-subtitle {
-            font-size: 1.4rem;
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            color: #eee;
         }
-        
+
+        .vehicle-types {
+            display: inline-block;
+            margin-top: 1rem;
+            font-weight: 600;
+            color: #ff6b35;
+        }
+
+        .cta-stack {
+            display: grid;
+            gap: 1.2rem;
+            max-width: 400px;
+        }
+
+        .btn-secondary {
+            background: #2b2b2b;
+            border: 2px solid #ff6b35;
+            color: #ff6b35;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #666;
+            color: #fff;
+        }
+
         .trust-badges {
-            flex-direction: column;
+            margin-top: 3rem;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
-    }
-     /* Footer Styles */
-    footer {
-        background-color: var(--dark);
-        color: var(--white);
-        padding: 60px 0 20px;
-    }
 
-    .footer-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 40px;
-        margin-bottom: 40px;
-    }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
 
-    .footer-col h3 {
-        font-size: 1.3rem;
-        margin-bottom: 20px;
-        color: var(--primary);
-    }
+        .hero-scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            font-size: 2rem;
+            color: #fff;
+        }
 
-    .footer-col ul {
-        list-style: none;
-    }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
 
-    .footer-col ul li {
-        margin-bottom: 10px;
-    }
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .trust-badges {
+                flex-direction: column;
+            }
+        }
+        /* Footer Styles */
+        footer {
+            background-color: #0a0a0a;
+            color: #fff;
+            padding: 60px 0 20px;
+        }
 
-    .footer-col ul li a {
-        color: var(--gray);
-        transition: var(--transition);
-    }
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    .footer-col ul li a:hover {
-        color: var(--primary);
-        padding-left: 5px;
-    }
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #ff6b35;
+        }
 
-    .social-links {
-        display: flex;
-        gap: 15px;
-    }
+        .footer-col ul {
+            list-style: none;
+        }
 
-    .social-links a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        background-color: var(--dark-light);
-        border-radius: 50%;
-        color: var(--white);
-        transition: var(--transition);
-    }
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
 
-    .social-links a:hover {
-        background-color: var(--primary);
-        transform: translateY(-3px);
-    }
+        .footer-col ul li a {
+            color: #6c757d;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
 
-    .copyright {
-        text-align: center;
-        padding-top: 20px;
-        border-top: 1px solid var(--dark-light);
-        color: var(--gray);
-        font-size: 0.9rem;
-    }
+        .footer-col ul li a:hover {
+            color: #ff6b35;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #1a1a1a;
+            border-radius: 50%;
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #ff6b35;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #1a1a1a;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -379,107 +346,71 @@
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
         <nav class="nav-links">
             <a href="inventory.html"><i class="fas fa-motorcycle"></i>Inventory</a>
-            <a href="/services.html"><i class="fas fa-tools"></i>Services</a>
-            <a href="/about.html"><i class="fas fa-info-circle"></i>About</a>
-            <a href="#" onclick="toggleModal('loginModal')"><i class="fas fa-sign-in-alt"></i>Login</a>
-             <a href="#" onclick="logout()" id="logoutLink" style="display: none;">
-        <i class="fas fa-sign-out-alt"></i> Logout
-    </a>
+            <a href="services.html"><i class="fas fa-tools"></i>Services</a>
+            <a href="about.html"><i class="fas fa-info-circle"></i>About</a>
+            <a href="login.html" id="loginLink"><i class="fas fa-sign-in-alt"></i>Login</a>
+            <a href="#" onclick="logout()" id="logoutLink" style="display: none;">
+                <i class="fas fa-sign-out-alt"></i>Logout
+            </a>
         </nav>
-       
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-    <div class="hero-overlay">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">Premium Rides & Expert Care</h1>
-                <h2 class="hero-subtitle">An Importer of<br> 
-                    <span class="vehicle-types">
-                        <span>Superbikes</span> • 
-                        <span>Trikes</span> • 
-                        <span>UTVs</span> • 
-                        <span>ATVs</span>
-                    </span>
-                </h2>
-                <div class="hero-cta-container">
-                    <div class="cta-stack">
-                        <button class="btn btn-primary" onclick="toggleModal('signupModal')">
-                            <i class="fas fa-vcard"></i> VIP Membership
-                        </button>
-                        <a href="#inventory" class="btn btn-secondary">
-                            <i class="fas fa-warehouse"></i> Current Stock
-                        </a>
-                        <a href="#services" class="btn btn-outline">
-                            <i class="fas fa-tools"></i> Service Booking
-                        </a>
-                    </div>
-                    <div class="trust-badges">
-                        <div class="trust-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Certified Imports</span>
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Premium Rides & Expert Care</h1>
+                    <h2 class="hero-subtitle">An Importer of<br> 
+                        <span class="vehicle-types">
+                            <span>Superbikes</span> • 
+                            <span>Trikes</span> • 
+                            <span>UTVs</span> • 
+                            <span>ATVs</span>
+                        </span>
+                    </h2>
+                    <div class="hero-cta-container">
+                        <div class="cta-stack">
+                            <a href="#vip" class="btn btn-primary">
+                                <i class="fas fa-vcard"></i> VIP Membership
+                            </a>
+                            <a href="#inventory" class="btn btn-secondary">
+                                <i class="fas fa-warehouse"></i> Current Stock
+                            </a>
+                            <a href="#services" class="btn btn-outline">
+                                <i class="fas fa-tools"></i> Service Booking
+                            </a>
                         </div>
-                        <div class="trust-item">
-                            <i class="fas fa-cog"></i>
-                            <span>Factory-Trained Techs</span>
-                        </div>
-                        <div class="trust-item">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>5-Year Warranty Options</span>
+                        <div class="trust-badges">
+                            <div class="trust-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Certified Imports</span>
+                            </div>
+                            <div class="trust-item">
+                                <i class="fas fa-cog"></i>
+                                <span>Factory-Trained Techs</span>
+                            </div>
+                            <div class="trust-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>5-Year Warranty Options</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="hero-scroll-indicator">
-                <i class="fas fa-chevron-down"></i>
+                <div class="hero-scroll-indicator">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-
-    <!-- Signup Modal -->
-    <div id="signupModal" class="modal">
-        <span class="modal-close" onclick="toggleModal('signupModal')">&times;</span>
-        <h2>Join Collector's Club</h2>
-        <form id="signupForm">
-            <div class="form-group">
-                <input type="email" placeholder="Email" required>
-            </div>
-            <div class="form-group">
-                <input type="password" placeholder="Password" required>
-            </div>
-            <button class="btn btn-primary" type="submit">Sign Up</button>
-        </form>
-    </div>
-
-    <!-- Login Modal -->
-    <div id="loginModal" class="modal">
-    <span class="modal-close" onclick="toggleModal('loginModal')">&times;</span>
-    <h2>Member Login</h2>
-    <div id="loginMessage" class="status-message"></div>
-    <form id="loginForm">
-        <div class="form-group">
-            <input type="email" id="loginEmail" placeholder="Email" required>
-        </div>
-        <div class="form-group">
-            <input type="password" id="loginPassword" placeholder="Password" required>
-        </div>
-        <button class="btn btn-primary" type="submit">Login</button>
-        <div style="margin-top: 1rem;">
-            <button type="button" class="btn btn-outline" onclick="googleSignIn()">
-                <i class="fab fa-google"></i> Sign in with Google
-            </button>
-        </div>
-    </form>
-</div>
+    </section>
 
     <!-- Inventory Section -->
     <section class="inventory-grid" id="inventory">
         <!-- Bike cards would be dynamically loaded here -->
     </section>
+
+    <!-- Footer -->
     <footer>
-    <div class="container">
         <div class="footer-container">
             <div class="footer-col">
                 <h3>THE BIKE COLLECTOR</h3>
@@ -489,11 +420,8 @@
                         <i class="fab fa-instagram"></i>
                     </a>
                     <a href="https://www.facebook.com/profile.php?id=100070871052944" target="_blank">
-  <i class="fab fa-facebook-f"></i>
-</a>
-
-                 <!--  <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>  -->
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
                 </div>
             </div>
             
@@ -501,8 +429,8 @@
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="#inventory.html">Inventory</a></li>
-                    <li><a href="#services.html">Services</a></li>
+                    <li><a href="inventory.html">Inventory</a></li>
+                    <li><a href="services.html">Services</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
@@ -533,31 +461,28 @@
         <div class="copyright">
             <p>&copy; <span id="year"></span> The Voyani Investments. All Rights Reserved.</p>
         </div>
-    </div>
-</footer>
-<!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    </footer>
 
-<script>
-  // Initialize Firebase once at the BOTTOM of <body>
-  const firebaseConfig = {
-    apiKey: "AIzaSyDgttxWF8CuYHmDnwxqsVkCUSJsAUP_ESs",
-    authDomain: "thebikecollector-67998.firebaseapp.com",
-    projectId: "thebikecollector-67998",
-    storageBucket: "thebikecollector-67998.appspot.com",
-    messagingSenderId: "764145130466",
-    appId: "1:764145130466:web:8d46e071706f59437877bb",
-    measurementId: "G-TRJX1GQ632"
-  };
-  
-  // Initialize Firebase
-  const app = firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-  const db = firebase.firestore();
-</script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+
     <script>
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDgttxWF8CuYHmDnwxqsVkCUSJsAUP_ESs",
+            authDomain: "thebikecollector-67998.firebaseapp.com",
+            projectId: "thebikecollector-67998",
+            storageBucket: "thebikecollector-67998.appspot.com",
+            messagingSenderId: "764145130466",
+            appId: "1:764145130466:web:8d46e071706f59437877bb",
+            measurementId: "G-TRJX1GQ632"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
         // Mobile Menu Toggle
         function toggleMobileMenu() {
             const navLinks = document.querySelector('.nav-links');
@@ -571,47 +496,28 @@
             }
         });
 
-        // Modal Toggle
-        function toggleModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
-            document.querySelector('.nav-links').classList.remove('active');
+        // Logout Function
+        function logout() {
+            auth.signOut().then(() => {
+                window.location.reload();
+            });
         }
 
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target.className === 'modal') {
-                event.target.style.display = 'none';
+        // Auth State Listener
+        auth.onAuthStateChanged(user => {
+            const logoutLink = document.getElementById('logoutLink');
+            const loginLink = document.getElementById('loginLink');
+            if (user) {
+                logoutLink.style.display = 'block';
+                loginLink.style.display = 'none';
+            } else {
+                logoutLink.style.display = 'none';
+                loginLink.style.display = 'block';
             }
-        }
+        });
 
-        // Form Handling
-        document.getElementById('signupForm').onsubmit = function(e) {
-            e.preventDefault();
-            // Add your signup logic here
-            alert('Thank you for signing up!');
-            toggleModal('signupModal');
-        }
-
-        document.getElementById('loginForm').onsubmit = function(e) {
-            e.preventDefault();
-            // Add your login logic here
-            alert('Welcome back!');
-            toggleModal('loginModal');
-        }
-         // Set current year automatically
-  document.getElementById('year').textContent = new Date().getFullYear();
-  auth.onAuthStateChanged(user => {
-  const logoutLink = document.getElementById('logoutLink');
-  logoutLink.style.display = user ? 'block' : 'none';
-});
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
-
-    <!-- Add Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-    
-
 </body>
-
 </html>
