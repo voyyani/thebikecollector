@@ -17,6 +17,8 @@
             --gray: #6c757d;
             --white: #ffffff;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --gold: #FFD700;
+            --silver: #C0C0C0;
         }
 
         * {
@@ -30,6 +32,34 @@
             background-color: var(--dark);
             color: var(--white);
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(180deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.8) 100%);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,107,53,0.2);
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 4px rgba(255,107,53,0.4);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
         }
 
         /* Dashboard Structure */
@@ -47,6 +77,7 @@
             width: 280px;
             height: calc(100vh - 80px);
             border-right: 1px solid rgba(255,107,53,0.1);
+            backdrop-filter: blur(5px);
         }
 
         .dashboard-main {
@@ -73,21 +104,23 @@
             text-decoration: none;
             position: relative;
             overflow: hidden;
+            background: rgba(255,255,255,0.05);
         }
 
         .nav-item:hover {
-            background: rgba(255,107,53,0.1);
+            background: linear-gradient(90deg, rgba(255,107,53,0.1) 0%, rgba(255,107,53,0.05) 100%);
             transform: translateX(5px);
         }
 
         .nav-item.active {
-            background: var(--primary);
-            box-shadow: 0 4px 6px -1px rgba(255,107,53,0.1);
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+            box-shadow: 0 4px 6px -1px rgba(255,107,53,0.2);
         }
 
         .nav-item i {
             width: 24px;
             text-align: center;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
         }
 
         /* Content Sections */
@@ -103,6 +136,7 @@
             font-size: 2.5rem;
             letter-spacing: 1px;
             color: var(--primary);
+            text-shadow: 0 2px 4px rgba(255,107,53,0.2);
         }
 
         .bike-grid {
@@ -117,11 +151,32 @@
             overflow: hidden;
             transition: var(--transition);
             border: 1px solid rgba(255,107,53,0.1);
+            position: relative;
+            cursor: pointer;
         }
 
         .bike-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);
+        }
+
+        .bike-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,107,53,0.1), transparent);
+            transform: rotate(45deg);
+            transition: var(--transition);
+            opacity: 0;
+        }
+
+        .bike-card:hover::before {
+            opacity: 1;
+            top: -30%;
+            left: -30%;
         }
 
         .bike-image {
@@ -130,21 +185,37 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bike-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
         }
 
         .bike-image img {
-            max-width: 100%;
+            max-width: 85%;
             height: auto;
+            transition: transform 0.3s ease;
         }
 
         .bike-details {
             padding: 1.5rem;
+            position: relative;
+            z-index: 1;
         }
 
         .bike-title {
             font-family: 'Bebas Neue', cursive;
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
+            color: var(--white);
         }
 
         .bike-price {
@@ -152,12 +223,21 @@
             font-size: 1.25rem;
             font-weight: 500;
             margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .bike-price::before {
+            content: '•';
+            color: var(--gold);
         }
 
         .bike-specs {
             display: flex;
             gap: 1rem;
             margin-bottom: 1rem;
+            flex-wrap: wrap;
         }
 
         .spec-item {
@@ -166,10 +246,13 @@
             gap: 0.5rem;
             font-size: 0.9rem;
             color: var(--gray);
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 6px;
         }
 
         .btn-primary {
-            background: var(--primary);
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: var(--white);
             padding: 0.75rem 1.5rem;
             border: none;
@@ -180,10 +263,119 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             font-weight: 500;
+            position: relative;
+            overflow: hidden;
         }
 
-        .btn-primary:hover {
-            background: var(--primary-dark);
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255,255,255,0.3),
+                transparent
+            );
+            transition: all 0.6s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            background: var(--dark-light);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 400px;
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,107,53,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            min-width: 120px;
+        }
+
+        .modal-btn.confirm {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+        }
+
+        .modal-btn.cancel {
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .modal-btn.cancel:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--gray);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            z-index: 3000;
+        }
+
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
         /* Responsive Design */
@@ -219,15 +411,42 @@
             .bike-grid {
                 grid-template-columns: 1fr;
             }
+
+            .modal-content {
+                width: 90%;
+                padding: 1.5rem;
+            }
+
+            .modal-buttons {
+                flex-direction: column;
+            }
+
+            .modal-btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="loading-spinner"></div>
+
+    <!-- Logout Confirmation Modal -->
+    <div class="modal-overlay" id="logoutModal">
+        <div class="modal-content">
+            <h3 class="modal-title">Confirm Logout</h3>
+            <p class="modal-message">Are you sure you want to log out of your account?</p>
+            <div class="modal-buttons">
+                <button class="modal-btn cancel" onclick="hideLogoutModal()">Cancel</button>
+                <button class="modal-btn confirm" onclick="confirmLogout()">Log Out</button>
+            </div>
+        </div>
+    </div>
+
     <header>
         <div class="container header-container">
             <a href="index.html" class="logo">THE BIKE COLLECTOR</a>
             <nav class="nav-links">
-                <a href="#" onclick="logout()" class="nav-item">
+                <a href="#" onclick="showLogoutModal()" class="nav-item">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
             </nav>
@@ -237,8 +456,8 @@
     <div class="dashboard-container">
         <aside class="dashboard-sidebar">
             <div class="user-greeting">
-                <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Welcome back,</h3>
-                <p id="userEmail" style="color: var(--gray);">loading...</p>
+                <h3 class="greeting-text">Welcome back,</h3>
+                <p id="userEmail" class="user-email">loading...</p>
             </div>
             
             <nav class="dashboard-nav">
@@ -258,14 +477,12 @@
         </aside>
 
         <main class="dashboard-main">
-            <!-- Purchase Section -->
             <section id="purchase" class="content-section">
                 <div class="section-header">
                     <h2 class="section-title">Premium Inventory</h2>
                 </div>
 
                 <div class="bike-grid">
-                    <!-- Bike Card 1 -->
                     <div class="bike-card">
                         <div class="bike-image">
                             <img src="assets/bikes/ducati.png" alt="Ducati Panigale V4">
@@ -285,7 +502,6 @@
                         </div>
                     </div>
 
-                    <!-- Bike Card 2 -->
                     <div class="bike-card">
                         <div class="bike-image">
                             <img src="assets/bikes/bmw.png" alt="BMW R 1250 GS">
@@ -309,7 +525,6 @@
         </main>
     </div>
 
-    <!-- Firebase Integration -->
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
@@ -327,65 +542,98 @@
         const app = firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
+        const loadingSpinner = document.querySelector('.loading-spinner');
 
         // Auth State Management
         auth.onAuthStateChanged(user => {
+            loadingSpinner.style.display = 'block';
             if (!user) {
-                window.location.href = "index.html";
+                window.location.href = "index.html?redirect=services";
             } else {
                 document.getElementById('userEmail').textContent = user.email;
                 loadDashboardContent(user.uid);
+                setTimeout(() => {
+                    loadingSpinner.style.display = 'none';
+                    document.body.style.visibility = 'visible';
+                }, 500);
+                showSection('purchase');
             }
         });
 
-        function logout() {
-            auth.signOut().then(() => window.location.href = "index.html");
+        // Logout Functions
+        function showLogoutModal() {
+            document.getElementById('logoutModal').classList.add('active');
+        }
+
+        function hideLogoutModal() {
+            document.getElementById('logoutModal').classList.remove('active');
+        }
+
+        function confirmLogout() {
+            loadingSpinner.style.display = 'block';
+            auth.signOut().then(() => {
+                window.location.href = 'index.html?logout=true';
+            }).catch((error) => {
+                console.error('Logout error:', error);
+                loadingSpinner.style.display = 'none';
+                hideLogoutModal();
+            });
         }
 
         // Navigation Handling
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', function(e) {
                 e.preventDefault();
-                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                document.querySelectorAll('.nav-item').forEach(nav => {
+                    nav.classList.remove('active');
+                    nav.style.transform = 'translateX(0)';
+                });
                 this.classList.add('active');
+                this.style.transform = 'translateX(10px)';
                 const sectionId = this.getAttribute('href').substring(1);
                 showSection(sectionId);
             });
         });
 
+        // Section Transitions
         function showSection(sectionId) {
             document.querySelectorAll('.content-section').forEach(section => {
-                section.style.display = 'none';
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    section.style.display = 'none';
+                }, 300);
             });
-            document.getElementById(sectionId).style.display = 'block';
+            
+            const activeSection = document.getElementById(sectionId);
+            activeSection.style.display = 'block';
+            setTimeout(() => {
+                activeSection.style.opacity = '1';
+                activeSection.style.transform = 'translateY(0)';
+            }, 50);
         }
 
         // Initial Load
         function loadDashboardContent(uid) {
-            // Implement data loading from Firestore
+            // Firestore integration placeholder
             showSection('purchase');
         }
-    </script>
-    <script>
-    // Firebase Auth State Listener
-    auth.onAuthStateChanged(user => {
-        if (!user) {
-            // Redirect to login with return URL
-            window.location.href = 'index.html?redirect=services';
-        } else {
-            // Load dashboard content
-            document.getElementById('userEmail').textContent = user.email;
-            loadDashboardContent(user.uid);
-            showSection('purchase');
-        }
-    });
 
-    // Enhanced Logout Function
-    function logout() {
-        auth.signOut().then(() => {
-            window.location.href = 'index.html?logout=true';
+        // Prevent right-click
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            return false;
         });
-    }
-</script>
+
+        // Touch gesture prevention
+        let lastTouch = 0;
+        document.addEventListener('touchstart', (event) => {
+            const now = Date.now();
+            if (now - lastTouch <= 300) {
+                event.preventDefault();
+            }
+            lastTouch = now;
+        }, { passive: false });
+    </script>
 </body>
 </html>
