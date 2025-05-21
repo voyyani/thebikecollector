@@ -446,7 +446,7 @@
         <div class="container header-container">
             <a href="index.html" class="logo">THE BIKE COLLECTOR</a>
             <nav class="nav-links">
-                <a href="#" onclick="showLogoutModal()" class="nav-item">
+                <a href="index.html" onclick="showLogoutModal()" class="nav-item">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
             </nav>
@@ -570,16 +570,21 @@
         }
 
         function confirmLogout() {
-            loadingSpinner.style.display = 'block';
-            auth.signOut().then(() => {
-                window.location.href = 'index.html?logout=true';
-            }).catch((error) => {
-                console.error('Logout error:', error);
-                loadingSpinner.style.display = 'none';
-                hideLogoutModal();
-            });
-        }
-
+    loadingSpinner.style.display = 'block';
+    hideLogoutModal(); // Close the modal immediately after confirmation
+    
+    auth.signOut().then(() => {
+        // Add a small delay for better UX
+        setTimeout(() => {
+            window.location.href = 'index.html?logout=true';
+        }, 500);
+    }).catch((error) => {
+        console.error('Logout error:', error);
+        loadingSpinner.style.display = 'none';
+        // Optional: Show error message to user
+        alert('Logout failed. Please try again.');
+    });
+}
         // Navigation Handling
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', function(e) {
