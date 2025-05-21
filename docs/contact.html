@@ -304,6 +304,9 @@
                 <a href="#services"><i class="fas fa-tools"></i>Services</a>
                 <a href="about.html"><i class="fas fa-info-circle"></i>About</a>
                 <a href="#" onclick="toggleModal('loginModal')"><i class="fas fa-sign-in-alt"></i>Login</a>
+                 <a href="#" onclick="logout()" id="logoutLink" style="display: none;">
+        <i class="fas fa-sign-out-alt"></i> Logout
+    </a>
             </nav>
         </div>
     </header>
@@ -472,6 +475,25 @@
         // Set current year
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 
+<!-- Initialize Firebase -->
+<script>
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_BUCKET.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+  const app = firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+</script>
 </body>
 </html>
