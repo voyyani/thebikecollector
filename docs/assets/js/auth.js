@@ -1,3 +1,4 @@
+const auth = firebase.auth();
 // Email/Password Login
 document.getElementById('loginForm').addEventListener('submit', (e) => {
     e.preventDefault();
@@ -11,10 +12,10 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
 
 // Google Sign-In
 function googleSignIn() {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider)
-        .then(() => window.location.href = "services.html")
-        .catch(error => handleAuthError(error));
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider)
+    .then(() => window.location.href = "services.html")
+    .catch(error => handleAuthError(error));
 }
 
 // Auth State Listener

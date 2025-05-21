@@ -535,6 +535,28 @@
         </div>
     </div>
 </footer>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+
+<script>
+  // Initialize Firebase once at the BOTTOM of <body>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDgttxWF8CuYHmDnwxqsVkCUSJsAUP_ESs",
+    authDomain: "thebikecollector-67998.firebaseapp.com",
+    projectId: "thebikecollector-67998",
+    storageBucket: "thebikecollector-67998.appspot.com",
+    messagingSenderId: "764145130466",
+    appId: "1:764145130466:web:8d46e071706f59437877bb",
+    measurementId: "G-TRJX1GQ632"
+  };
+  
+  // Initialize Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+</script>
     <script>
         // Mobile Menu Toggle
         function toggleMobileMenu() {
@@ -579,37 +601,16 @@
         }
          // Set current year automatically
   document.getElementById('year').textContent = new Date().getFullYear();
+  auth.onAuthStateChanged(user => {
+  const logoutLink = document.getElementById('logoutLink');
+  logoutLink.style.display = user ? 'block' : 'none';
+});
     </script>
 
     <!-- Add Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
-
-<!-- Initialize Firebase -->
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-analytics.js";
-
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyDgttxWF8CuYHmDnwxqsVkCUSJsAUP_ESs",
-    authDomain: "thebikecollector-67998.firebaseapp.com",
-    projectId: "thebikecollector-67998",
-    storageBucket: "thebikecollector-67998.appspot.com", // ✅ Corrected value
-    messagingSenderId: "764145130466",
-    appId: "1:764145130466:web:8d46e071706f59437877bb",
-    measurementId: "G-TRJX1GQ632"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
+    
 
 </body>
 
