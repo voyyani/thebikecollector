@@ -1,71 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Bike Collector</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Bike Collector | Superbikes & Cruisers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
 
-    header {
-      text-align: center;
-    }
+        body {
+            background-color: #0a0a0a;
+            color: #fff;
+        }
 
-    h1 {
-      font-size: 2.5rem;
-      color: #2e3a59;
-    }
+        /* Header */
+        header {
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      line-height: 1.5;
-    }
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2.5rem;
+            color: #ff6b35;
+        }
 
-    .button {
-      margin-top: 20px;
-      padding: 12px 24px;
-      background-color: #2e3a59;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
 
-    .button:hover {
-      background-color: #40507a;
-    }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
 
-    footer {
-      margin-top: 40px;
-      font-size: 0.9rem;
-      color: #888;
-    }
-  </style>
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            margin-top: 80px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc') center/cover;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-buttons {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .btn-primary {
+            background: #ff6b35;
+            color: #fff;
+        }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 10px;
+            z-index: 1001;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            cursor: pointer;
+        }
+
+        .modal h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.8rem;
+            margin-top: 0.5rem;
+            background: #333;
+            border: none;
+            color: #fff;
+        }
+
+        /* Inventory Grid */
+        .inventory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 5%;
+        }
+
+        .bike-card {
+            background: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .bike-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Welcome to The Bike Collector</h1>
-    <p>Your future hub for everything vintage, rare, and beautiful in the world of bicycles.</p>
-    <a class="button" href="#">Coming Soon</a>
-  </header>
+    <!-- Header -->
+    <header>
+        <div class="logo">THE BIKE COLLECTOR</div>
+        <nav class="nav-links">
+            <a href="#inventory">Inventory</a>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#" onclick="toggleModal('loginModal')">Login</a>
+        </nav>
+    </header>
 
-  <footer>
-    &copy; 2025 The Bike Collector. All rights reserved.
-  </footer>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Where Superbikes Meet Soul</h1>
+            <p>Nairobi's Ultimate Motorcycle Destination</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary" onclick="toggleModal('signupModal')">Join Collector's Club</button>
+                <button class="btn btn-primary">View Inventory</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <span class="modal-close" onclick="toggleModal('signupModal')">&times;</span>
+        <h2>Join Collector's Club</h2>
+        <form id="signupForm">
+            <div class="form-group">
+                <input type="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Password" required>
+            </div>
+            <button class="btn btn-primary" type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <span class="modal-close" onclick="toggleModal('loginModal')">&times;</span>
+        <h2>Member Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <input type="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Password" required>
+            </div>
+            <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+    </div>
+
+    <!-- Inventory Section -->
+    <section class="inventory-grid" id="inventory">
+        <!-- Bike cards would be dynamically loaded here -->
+    </section>
+
+    <script>
+        // Modal Toggle
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = 'none';
+            }
+        }
+
+        // Form Handling
+        document.getElementById('signupForm').onsubmit = function(e) {
+            e.preventDefault();
+            // Add your signup logic here
+            alert('Thank you for signing up!');
+            toggleModal('signupModal');
+        }
+
+        document.getElementById('loginForm').onsubmit = function(e) {
+            e.preventDefault();
+            // Add your login logic here
+            alert('Welcome back!');
+            toggleModal('loginModal');
+        }
+    </script>
+
+    <!-- Add Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </body>
 </html>
