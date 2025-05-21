@@ -319,9 +319,9 @@
     <!-- Contact Content -->
     <div class="container">
         <div class="contact-container">
-            <!-- Contact Form -->
-<form id="contactForm" class="contact-form" action="https://formspree.io/f/mgvkqggj" method="POST"></form>
-            <div class="status-message"></div>
+            <!-- Contact Form - Fixed Structure -->
+            <form id="contactForm" class="contact-form" action="https://formspree.io/f/mgvkqggj" method="POST">
+                <div class="status-message"></div>
 
                 <div class="form-group">
                     <label class="form-label" for="name">Full Name</label>
@@ -418,10 +418,10 @@
 
         // Form Submission Handling
         const contactForm = document.getElementById('contactForm');
-        const statusMessage = document.querySelector('.status-message');
-        const submitBtn = document.querySelector('.submit-btn');
-        const btnText = document.querySelector('.btn-text');
-        const spinner = document.querySelector('.spinner');
+        const statusMessage = contactForm.querySelector('.status-message');
+        const submitBtn = contactForm.querySelector('.submit-btn');
+        const btnText = submitBtn.querySelector('.btn-text');
+        const spinner = submitBtn.querySelector('.spinner');
 
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -440,11 +440,13 @@
                     }
                 });
 
+                const responseData = await response.json();
+                
                 if (response.ok) {
                     showMessage('Message sent successfully! We will respond shortly.', 'success');
                     contactForm.reset();
                 } else {
-                    showMessage('There was an error sending your message. Please try again.', 'error');
+                    showMessage(responseData.error || 'There was an error sending your message. Please try again.', 'error');
                 }
             } catch (error) {
                 showMessage('Network error. Please check your connection.', 'error');
@@ -470,5 +472,6 @@
         // Set current year
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
+
 </body>
 </html>
