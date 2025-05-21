@@ -303,6 +303,73 @@
             flex-direction: column;
         }
     }
+     /* Footer Styles */
+    footer {
+        background-color: var(--dark);
+        color: var(--white);
+        padding: 60px 0 20px;
+    }
+
+    .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .footer-col h3 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        color: var(--primary);
+    }
+
+    .footer-col ul {
+        list-style: none;
+    }
+
+    .footer-col ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+        color: var(--gray);
+        transition: var(--transition);
+    }
+
+    .footer-col ul li a:hover {
+        color: var(--primary);
+        padding-left: 5px;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 15px;
+    }
+
+    .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: var(--dark-light);
+        border-radius: 50%;
+        color: var(--white);
+        transition: var(--transition);
+    }
+
+    .social-links a:hover {
+        background-color: var(--primary);
+        transform: translateY(-3px);
+    }
+
+    .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid var(--dark-light);
+        color: var(--gray);
+        font-size: 0.9rem;
+    }
     </style>
 </head>
 <body>
@@ -401,7 +468,60 @@
     <section class="inventory-grid" id="inventory">
         <!-- Bike cards would be dynamically loaded here -->
     </section>
-
+    <footer>
+    <div class="container">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>THE BIKE COLLECTOR</h3>
+                <p>Nairobi's premier destination for premium vehicles and expert service.</p>
+                <div class="social-links" style="margin-top: 20px;">
+                    <a href="https://www.instagram.com/bikes254_/" target="_blank" rel="noopener">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#inventory">Inventory</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Vehicle Import</a></li>
+                    <li><a href="#">Maintenance</a></li>
+                    <li><a href="#">Performance Tuning</a></li>
+                    <li><a href="#">Parts & Accessories</a></li>
+                    <li><a href="#">Custom Builds</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Bofa, Kilifi</li>
+                    <li><i class="fas fa-phone"></i> +254 769 643210</li>
+                    <li><i class="fas fa-envelope"></i> support@thebikecollector.info</li>
+                    <li><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; <span id="year"></span> The Voyani Investments. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
     <script>
         // Mobile Menu Toggle
         function toggleMobileMenu() {
