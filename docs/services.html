@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Maintenance | The Bike Collector</title>
+    <title>Member Dashboard | The Bike Collector</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -14,9 +14,8 @@
             --dark-light: #1a1a1a;
             --light: #f8f9fa;
             --gray: #6c757d;
-            --light-gray: #e9ecef;
             --white: #ffffff;
-            --transition: all 0.3s ease;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -30,169 +29,362 @@
             background-color: var(--dark);
             color: var(--white);
             line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
 
-        .container {
-            width: 85%;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            flex: 1;
+        /* Dashboard Structure */
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        .dashboard-sidebar {
+            background: var(--dark-light);
+            padding: 2rem 1.5rem;
+            position: fixed;
+            width: 280px;
+            height: calc(100vh - 80px);
+            border-right: 1px solid rgba(255,107,53,0.1);
+        }
+
+        .dashboard-main {
+            padding: 3rem 2rem;
+            margin-left: 280px;
+        }
+
+        /* Navigation */
+        .dashboard-nav {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        .nav-item {
+            color: var(--white);
+            padding: 1rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            display: flex;
             align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,107,53,0.1);
+            transform: translateX(5px);
+        }
+
+        .nav-item.active {
+            background: var(--primary);
+            box-shadow: 0 4px 6px -1px rgba(255,107,53,0.1);
+        }
+
+        .nav-item i {
+            width: 24px;
             text-align: center;
         }
 
-        .maintenance-logo {
-            font-family: 'Bebas Neue', cursive;
-            font-size: 3.5rem;
-            color: var(--primary);
+        /* Content Sections */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 2rem;
-            letter-spacing: 2px;
         }
 
-        .maintenance-icon {
-            font-size: 4rem;
-            color: var(--primary);
-            margin-bottom: 2rem;
-            animation: spin 2s linear infinite;
-        }
-
-        h1 {
+        .section-title {
             font-family: 'Bebas Neue', cursive;
             font-size: 2.5rem;
-            color: var(--white);
-            margin-bottom: 1.5rem;
             letter-spacing: 1px;
-        }
-
-        p {
-            color: var(--gray);
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-
-        /* Footer Styles */
-        footer {
-            background: var(--dark);
-            padding: 30px 0;
-            border-top: 1px solid var(--dark-light);
-        }
-
-        .footer-nav {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-nav a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .footer-nav a:hover {
             color: var(--primary);
         }
 
-        .copyright {
-            text-align: center;
-            color: var(--gray);
+        .bike-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .bike-card {
+            background: var(--dark-light);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(255,107,53,0.1);
+        }
+
+        .bike-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        .bike-image {
+            height: 200px;
+            background: #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bike-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .bike-details {
+            padding: 1.5rem;
+        }
+
+        .bike-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .bike-price {
+            color: var(--primary);
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .bike-specs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             font-size: 0.9rem;
+            color: var(--gray);
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
         }
 
-        @media (max-width: 768px) {
-            .maintenance-logo {
-                font-size: 2.5rem;
-            }
-            
-            h1 {
-                font-size: 2rem;
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
             }
 
-            .footer-nav {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
+            .dashboard-sidebar {
+                position: static;
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid rgba(255,107,53,0.1);
+            }
+
+            .dashboard-main {
+                margin-left: 0;
+                padding: 2rem 1rem;
+            }
+
+            .dashboard-nav {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .nav-item {
+                flex: 1 1 160px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .bike-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-     <header>
-        <!-- Add logout button -->
-        <nav class="nav-links">
-            <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
-        </nav>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">THE BIKE COLLECTOR</a>
+            <nav class="nav-links">
+                <a href="#" onclick="logout()" class="nav-item">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </nav>
+        </div>
     </header>
-    <div class="container">
-        <div class="maintenance-logo">THE BIKE COLLECTOR</div>
-        <i class="fas fa-tools maintenance-icon"></i>
-        <h1>UNDER MAINTENANCE</h1>
-        <p>We're currently working hard to improve your experience. Please check back soon!</p>
+
+    <div class="dashboard-container">
+        <aside class="dashboard-sidebar">
+            <div class="user-greeting">
+                <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Welcome back,</h3>
+                <p id="userEmail" style="color: var(--gray);">loading...</p>
+            </div>
+            
+            <nav class="dashboard-nav">
+                <a href="#purchase" class="nav-item active">
+                    <i class="fas fa-motorcycle"></i> Purchase
+                </a>
+                <a href="#maintenance" class="nav-item">
+                    <i class="fas fa-tools"></i> Maintenance
+                </a>
+                <a href="#rentals" class="nav-item">
+                    <i class="fas fa-calendar-alt"></i> Rentals
+                </a>
+                <a href="#profile" class="nav-item">
+                    <i class="fas fa-user"></i> Profile
+                </a>
+            </nav>
+        </aside>
+
+        <main class="dashboard-main">
+            <!-- Purchase Section -->
+            <section id="purchase" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Premium Inventory</h2>
+                </div>
+
+                <div class="bike-grid">
+                    <!-- Bike Card 1 -->
+                    <div class="bike-card">
+                        <div class="bike-image">
+                            <img src="assets/bikes/ducati.png" alt="Ducati Panigale V4">
+                        </div>
+                        <div class="bike-details">
+                            <h3 class="bike-title">Ducati Panigale V4</h3>
+                            <div class="bike-specs">
+                                <div class="spec-item">
+                                    <i class="fas fa-tachometer-alt"></i> 214 HP
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-cube"></i> 1103cc
+                                </div>
+                            </div>
+                            <p class="bike-price">$28,500</p>
+                            <button class="btn-primary">Configure Purchase</button>
+                        </div>
+                    </div>
+
+                    <!-- Bike Card 2 -->
+                    <div class="bike-card">
+                        <div class="bike-image">
+                            <img src="assets/bikes/bmw.png" alt="BMW R 1250 GS">
+                        </div>
+                        <div class="bike-details">
+                            <h3 class="bike-title">BMW R 1250 GS</h3>
+                            <div class="bike-specs">
+                                <div class="spec-item">
+                                    <i class="fas fa-tachometer-alt"></i> 136 HP
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-cube"></i> 1254cc
+                                </div>
+                            </div>
+                            <p class="bike-price">$21,900</p>
+                            <button class="btn-primary">Schedule Test Ride</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
     </div>
 
-    <footer>
-        <div class="container">
-            <nav class="footer-nav">
-                <a href="index.html"><i class="fas fa-home"></i> Home</a>
-                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-                <a href="#services"><i class="fas fa-tools"></i> Services</a>
-            </nav>
-            <p class="copyright">
-                &copy; <span id="year"></span> Voyani Investments. All rights reserved.
-            </p>
-        </div>
-    </footer>
-<!-- Initialize Firebase -->
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
-
-<script>
-  // Initialize Firebase once at the BOTTOM of <body>
-  const firebaseConfig = {
-    apiKey: "AIzaSyDgttxWF8CuYHmDnwxqsVkCUSJsAUP_ESs",
-    authDomain: "thebikecollector-67998.firebaseapp.com",
-    projectId: "thebikecollector-67998",
-    storageBucket: "thebikecollector-67998.appspot.com",
-    messagingSenderId: "764145130466",
-    appId: "1:764145130466:web:8d46e071706f59437877bb",
-    measurementId: "G-TRJX1GQ632"
-  };
-  
-  // Initialize Firebase
-  const app = firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-  const db = firebase.firestore();
-</script>
+    <!-- Firebase Integration -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    
     <script>
-        // Set current year
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-  
+        const firebaseConfig = {
+            apiKey: "AIzaSyDgttxWF8CuYHmDnwxqsVkCUSJsAUP_ESs",
+            authDomain: "thebikecollector-67998.firebaseapp.com",
+            projectId: "thebikecollector-67998",
+            storageBucket: "thebikecollector-67998.appspot.com",
+            messagingSenderId: "764145130466",
+            appId: "1:764145130466:web:8d46e071706f59437877bb"
+        };
 
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
 
-<script>
-        // Auth Check
+        // Auth State Management
         auth.onAuthStateChanged(user => {
-            if (!user) window.location.href = "index.html";
+            if (!user) {
+                window.location.href = "index.html";
+            } else {
+                document.getElementById('userEmail').textContent = user.email;
+                loadDashboardContent(user.uid);
+            }
         });
+
+        function logout() {
+            auth.signOut().then(() => window.location.href = "index.html");
+        }
+
+        // Navigation Handling
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+                const sectionId = this.getAttribute('href').substring(1);
+                showSection(sectionId);
+            });
+        });
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        // Initial Load
+        function loadDashboardContent(uid) {
+            // Implement data loading from Firestore
+            showSection('purchase');
+        }
     </script>
+    <script>
+    // Firebase Auth State Listener
+    auth.onAuthStateChanged(user => {
+        if (!user) {
+            // Redirect to login with return URL
+            window.location.href = 'index.html?redirect=services';
+        } else {
+            // Load dashboard content
+            document.getElementById('userEmail').textContent = user.email;
+            loadDashboardContent(user.uid);
+            showSection('purchase');
+        }
+    });
+
+    // Enhanced Logout Function
+    function logout() {
+        auth.signOut().then(() => {
+            window.location.href = 'index.html?logout=true';
+        });
+    }
+</script>
 </body>
 </html>

@@ -519,5 +519,41 @@
         // Set current year
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
+    <!-- In index.html -->
+<script>
+    // Automatic Login Modal Trigger
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const redirect = urlParams.get('redirect');
+        const logout = urlParams.get('logout');
+        
+        if (redirect) {
+            toggleModal('loginModal');
+            document.getElementById('loginForm').dataset.redirect = redirect;
+        }
+        
+        if (logout) {
+            alert('You have been successfully logged out');
+        }
+    });
+
+    // Modified Login Handler
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+        const redirect = this.dataset.redirect || 'index';
+
+        auth.signInWithEmailAndPassword(email, password)
+            .then(() => {
+                window.location.href = `${redirect}.html`;
+            })
+            .catch(error => {
+                document.getElementById('loginMessage').textContent = error.message;
+                document.getElementById('loginMessage').className = "status-message error";
+                document.getElementById('loginMessage').style.display = 'block';
+            });
+    });
+</script>
 </body>
 </html>
