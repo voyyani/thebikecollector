@@ -24,13 +24,13 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            color: var(--dark);
+            background-color: var(--dark);
+            color: var(--white);
             line-height: 1.6;
-            background-color: var(--white);
         }
 
         .container {
@@ -38,6 +38,90 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+
+        /* ===== HEADER STYLES ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            background-color: rgba(10, 10, 10, 0.95);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2.5rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--dark);
+                flex-direction: column;
+                align-items: center;
+                padding: 40px 0;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links a {
+                padding: 1rem;
+                width: 100%;
+                justify-content: center;
+                border-bottom: 1px solid var(--dark-light);
+            }
         }
 
         /* ===== CONTACT FORM STYLES ===== */
@@ -54,6 +138,7 @@
             font-size: 4rem;
             letter-spacing: 2px;
             margin-bottom: 1rem;
+            color: var(--primary);
         }
 
         .contact-container {
@@ -64,10 +149,10 @@
         }
 
         .contact-form {
-            background: var(--white);
+            background: rgba(10, 10, 10, 0.95);
             padding: 40px;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid var(--dark-light);
         }
 
         .form-group {
@@ -78,15 +163,17 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
-            color: var(--dark);
+            color: var(--white);
         }
 
         .form-input {
             width: 100%;
             padding: 12px 15px;
-            border: 2px solid var(--light-gray);
+            background: var(--dark-light);
+            border: 2px solid var(--dark-light);
             border-radius: 6px;
             font-size: 1rem;
+            color: var(--white);
             transition: var(--transition);
         }
 
@@ -112,6 +199,8 @@
             transition: var(--transition);
             width: 100%;
             font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .submit-btn:hover {
@@ -127,16 +216,16 @@
 
         .contact-info {
             padding: 30px;
-            background: var(--light);
+            background: var(--dark);
             border-radius: 10px;
+            border: 1px solid var(--dark-light);
         }
 
         .info-item {
             margin-bottom: 30px;
             padding: 20px;
-            background: var(--white);
+            background: var(--dark-light);
             border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
         .info-item i {
@@ -150,14 +239,21 @@
             font-family: 'Bebas Neue', cursive;
             margin-bottom: 10px;
             font-size: 1.5rem;
+            color: var(--white);
+        }
+
+        .info-item p {
+            color: var(--gray);
+            line-height: 1.6;
         }
 
         .map-container {
             height: 400px;
-            background: var(--light-gray);
+            background: var(--dark);
             border-radius: 10px;
             overflow: hidden;
             margin-top: 50px;
+            border: 1px solid var(--dark-light);
         }
 
         .status-message {
@@ -165,18 +261,17 @@
             border-radius: 6px;
             margin: 20px 0;
             display: none;
+            color: var(--white);
         }
 
         .status-message.success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+            background: rgba(40, 167, 69, 0.2);
+            border: 1px solid #28a745;
         }
 
         .status-message.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+            background: rgba(220, 53, 69, 0.2);
+            border: 1px solid #dc3545;
         }
 
         /* ===== RESPONSIVE DESIGN ===== */
@@ -198,17 +293,17 @@
     </style>
 </head>
 <body>
-    <!-- Header (Same as previous pages) -->
+    <!-- Header -->
     <header>
         <div class="container header-container">
             <a href="index.html" class="logo">THE BIKE COLLECTOR</a>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
             <nav class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="#inventory">Inventory</a>
-                <a href="#services">Services</a>
-                <a href="about.html">About</a>
-                <a href="#" onclick="toggleModal('loginModal')">Login</a>
+                <a href="index.html"><i class="fas fa-home"></i>Home</a>
+                <a href="#inventory"><i class="fas fa-motorcycle"></i>Inventory</a>
+                <a href="#services"><i class="fas fa-tools"></i>Services</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i>About</a>
+                <a href="#" onclick="toggleModal('loginModal')"><i class="fas fa-sign-in-alt"></i>Login</a>
             </nav>
         </div>
     </header>
@@ -272,19 +367,19 @@
                 <div class="info-item">
                     <i class="fas fa-map-marker-alt"></i>
                     <h3>Visit Us</h3>
-                    <p>Karen Office Park<br>Nairobi, Kenya</p>
+                    <p>OFF Bofa Road<br>Kilifi, Kenya</p>
                 </div>
 
                 <div class="info-item">
                     <i class="fas fa-phone"></i>
                     <h3>Call Us</h3>
-                    <p>+254 700 123 456<br>Mon-Sat: 8AM - 6PM</p>
+                    <p>+254 769 643 210<br>Mon-Sat: 8AM - 6PM</p>
                 </div>
 
                 <div class="info-item">
                     <i class="fas fa-envelope"></i>
                     <h3>Email Us</h3>
-                    <p>support@thebikecollector.info<br>sales@thebikecollector.info</p>
+                    <p>support@thebikecollector.info<br>karisa@thebikecollector.info</p>
                 </div>
             </div>
         </div>
@@ -295,19 +390,32 @@
                 width="100%" 
                 height="100%" 
                 frameborder="0" 
-                style="border:0"
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Karen+Nairobi" 
-                allowfullscreen>
+                style="border:0" 
+                allowfullscreen
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=-3.6261556,39.8472417">
             </iframe>
         </div>
     </div>
 
-    <!-- Footer (Same as previous pages) -->
-    <footer>
-        <!-- Include footer content from previous pages -->
+    <!-- Footer -->
+    <footer class="text-center py-4 bg-black text-white text-sm">
+        &copy; <span id="year"></span> Voyani Investments. All rights reserved.
     </footer>
 
     <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-links') && !e.target.closest('.mobile-menu-btn')) {
+                document.querySelector('.nav-links').classList.remove('active');
+            }
+        });
+
         // Form Submission Handling
         const contactForm = document.getElementById('contactForm');
         const statusMessage = document.querySelector('.status-message');
@@ -317,7 +425,7 @@
 
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
+
             // Show loading state
             btnText.style.display = 'none';
             spinner.style.display = 'block';
@@ -359,16 +467,8 @@
             }, 5000);
         }
 
-        // Include mobile menu and modal toggle functions from previous pages
-        function toggleMobileMenu() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        }
-
-        function toggleModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
-            document.querySelector('.nav-links').classList.remove('active');
-        }
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
