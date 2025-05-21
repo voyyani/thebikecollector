@@ -803,19 +803,26 @@ color: white;
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 
 <!-- Initialize Firebase -->
-<script>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-analytics.js";
+
+  // Your web app's Firebase configuration
   const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_BUCKET.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyDgttxWF8CuYHmDnwxqsVkCUSJsAUP_ESs",
+    authDomain: "thebikecollector-67998.firebaseapp.com",
+    projectId: "thebikecollector-67998",
+    storageBucket: "thebikecollector-67998.appspot.com", // ✅ Corrected value
+    messagingSenderId: "764145130466",
+    appId: "1:764145130466:web:8d46e071706f59437877bb",
+    measurementId: "G-TRJX1GQ632"
   };
 
-  const app = firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-  const db = firebase.firestore();
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
 </script>
+
 </body>
 </html>
