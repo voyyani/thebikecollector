@@ -1,0 +1,108 @@
+/* main.css - Centralized Style Sheet */
+/* ===== COLOR THEME & BASE STYLES ===== */
+:root {
+    /* Color Scheme */
+    --primary: #ff6b35;
+    --primary-dark: #e05a2b;
+    --dark: #0a0a0a;
+    --dark-light: #1a1a1a;
+    --light: #f8f9fa;
+    --gray: #6c757d;
+    --light-gray: #e9ecef;
+    --white: #ffffff;
+    
+    /* Transitions */
+    --transition: all 0.3s ease;
+    
+    /* Typography */
+    --heading-font: 'Bebas Neue', cursive;
+    --body-font: 'Roboto', sans-serif;
+}
+
+/* ===== BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--dark);
+    color: var(--white);
+    font-family: var(--body-font);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--white);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary);
+}
+
+/* ===== COMMON COMPONENTS ===== */
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===== HEADER STYLES ===== */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    background-color: rgba(10, 10, 10, 0.95);
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+/* ===== FOOTER STYLES ===== */
+.main-footer {
+    background: var(--dark);
+    padding: 30px 0;
+    border-top: 1px solid var(--dark-light);
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 992px) {
+    .container {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .container {
+        width: 95%;
+    }
+}
