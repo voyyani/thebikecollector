@@ -202,6 +202,107 @@
                 font-size: 2.5rem;
             }
         }
+    .hero {
+        height: 100vh;
+        position: relative;
+        background: linear-gradient(135deg, 
+            rgba(10, 10, 10, 0.95) 0%,
+            rgba(40, 40, 40, 0.85) 100%),
+            url('https://images.unsplash.com/photo-1600679472829-3044539ce8ed') center/cover;
+    }
+
+    .hero-overlay {
+        padding: 120px 5% 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-title {
+        font-family: 'Bebas Neue', cursive;
+        font-size: 4.5rem;
+        color: #fff;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        margin-bottom: 1.5rem;
+        line-height: 1;
+    }
+
+    .hero-subtitle {
+        font-size: 1.8rem;
+        font-weight: 300;
+        margin-bottom: 3rem;
+        color: #eee;
+    }
+
+    .vehicle-types {
+        display: inline-block;
+        margin-top: 1rem;
+        font-weight: 600;
+        color: #ff6b35;
+    }
+
+    .cta-stack {
+        display: grid;
+        gap: 1.2rem;
+        max-width: 400px;
+    }
+
+    .btn-secondary {
+        background: #2b2b2b;
+        border: 2px solid #ff6b35;
+        color: #ff6b35;
+    }
+
+    .btn-outline {
+        background: transparent;
+        border: 2px solid #666;
+        color: #fff;
+    }
+
+    .trust-badges {
+        margin-top: 3rem;
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .trust-item {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: 0.9rem;
+        color: #ccc;
+    }
+
+    .hero-scroll-indicator {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounce 2s infinite;
+        font-size: 2rem;
+        color: #fff;
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-30px); }
+        60% { transform: translateY(-15px); }
+    }
+
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 3rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+        }
+        
+        .trust-badges {
+            flex-direction: column;
+        }
+    }
     </style>
 </head>
 <body>
@@ -219,15 +320,52 @@
 
     <!-- Hero Section -->
     <section class="hero">
+    <div class="hero-overlay">
         <div class="hero-content">
-            <h1>Where Superbikes Meet Soul</h1>
-            <p>Nairobi's Ultimate Motorcycle Destination</p>
-            <div class="cta-buttons">
-                <button class="btn btn-primary" onclick="toggleModal('signupModal')">Join Collector's Club</button>
-                <button class="btn btn-primary">View Inventory</button>
+            <div class="hero-text">
+                <h1 class="hero-title">Premium Rides & Expert Care</h1>
+                <h2 class="hero-subtitle">Kenya's Leading Importer of<br> 
+                    <span class="vehicle-types">
+                        <span>Superbikes</span> • 
+                        <span>Trikes</span> • 
+                        <span>UTVs</span> • 
+                        <span>ATVs</span>
+                    </span>
+                </h2>
+                <div class="hero-cta-container">
+                    <div class="cta-stack">
+                        <button class="btn btn-primary" onclick="toggleModal('signupModal')">
+                            <i class="fas fa-vcard"></i> VIP Membership
+                        </button>
+                        <a href="#inventory" class="btn btn-secondary">
+                            <i class="fas fa-warehouse"></i> Current Stock
+                        </a>
+                        <a href="#services" class="btn btn-outline">
+                            <i class="fas fa-tools"></i> Service Booking
+                        </a>
+                    </div>
+                    <div class="trust-badges">
+                        <div class="trust-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Certified Imports</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="fas fa-cog"></i>
+                            <span>Factory-Trained Techs</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>5-Year Warranty Options</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Signup Modal -->
     <div id="signupModal" class="modal">
@@ -306,9 +444,15 @@
             alert('Welcome back!');
             toggleModal('loginModal');
         }
+         // Set current year automatically
+  document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 
     <!-- Add Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <footer style="text-align: center; padding: 1rem; background: #f8f8f8; font-size: 0.9rem; color: #555;">
+  &copy; <span id="year"></span> Voyani Investments. All rights reserved.
+</footer>
 </body>
+
 </html>
