@@ -299,7 +299,7 @@
             display: none;
             justify-content: center;
             align-items: center;
-            z-index: 2000;
+                z-index: 9999 !important;
         }
 
         .modal-content {
@@ -371,7 +371,7 @@
             border-top-color: var(--primary);
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            z-index: 3000;
+                z-index: 10000 !important;
         }
 
         @keyframes spin {
@@ -528,24 +528,28 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
-    
+    <script src="assets/js/auth.js"></script>
+<script>
+  requireAuth();
+</script>
     <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyDgttxWF8CuYHmDnwxqsVkCUSJsAUP_ESs",
-            authDomain: "thebikecollector-67998.firebaseapp.com",
-            projectId: "thebikecollector-67998",
-            storageBucket: "thebikecollector-67998.appspot.com",
-            messagingSenderId: "764145130466",
-            appId: "1:764145130466:web:8d46e071706f59437877bb"
-        };
+        
+       // const firebaseConfig = {
+        //    apiKey: "AIzaSyDgttxWF8CuYHmDnwxqsVkCUSJsAUP_ESs",
+          //  authDomain: "thebikecollector-67998.firebaseapp.com",
+          //  projectId: "thebikecollector-67998",
+           // storageBucket: "thebikecollector-67998.appspot.com",
+           // messagingSenderId: "764145130466",
+           // appId: "1:764145130466:web:8d46e071706f59437877bb"
+   //     };
 
-        const app = firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const db = firebase.firestore();
+     //   const app = firebase.initializeApp(firebaseConfig);
+       // const auth = firebase.auth();
+        //const db = firebase.firestore();
         const loadingSpinner = document.querySelector('.loading-spinner');
 
         // Auth State Management
-        auth.onAuthStateChanged(user => {
+        /*auth.onAuthStateChanged(user => {
             loadingSpinner.style.display = 'block';
             if (!user) {
                 window.location.href = "index.html?redirect=services";
@@ -558,7 +562,7 @@
                 }, 500);
                 showSection('purchase');
             }
-        });
+        });*/
 
         // Logout Functions
         function showLogoutModal() {

@@ -28,6 +28,15 @@ auth.onAuthStateChanged(user => {
     }
 });
 
+// Protect Page Function
+function requireAuth() {
+    auth.onAuthStateChanged(user => {
+        if (!user) {
+            window.location.href = "index.html"; // Redirect to login if not authenticated
+        }
+    });
+}
+
 // Error Handling
 function handleAuthError(error) {
     const message = document.getElementById('loginMessage');
